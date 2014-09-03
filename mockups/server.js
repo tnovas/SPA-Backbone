@@ -49,6 +49,6 @@ app.get('*', function(req, res) {
     res.sendfile('.'+ req.originalUrl);				
 });
 
-app.listen(1333, function() {
-    console.log('App listening on port 1333');
+app.listen(80, function() {
+    console.log('App listening on port 80');
 });
