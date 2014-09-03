@@ -10,7 +10,6 @@
         "body-parser": "1.4.x",
         "method-override": "2.1.x"
     },
-    "subdomain": "web",
     "scripts": {
         "start": "server.js"
     },
