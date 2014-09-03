@@ -49,6 +49,6 @@ app.get('*', function(req, res) {
     res.sendfile('.'+ req.originalUrl);				
 });
 
-app.listen(9002, function() {
-    console.log('App listening on port 9002');
+app.listen(process.env.PORT || 9002, function() {
+    console.log('App listening on port ' + process.env.PORT);
 });
