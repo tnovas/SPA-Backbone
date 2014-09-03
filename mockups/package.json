@@ -11,7 +11,7 @@
         "method-override": "2.1.x"
     },
     "scripts": {
-        "start": "node server.js"
+        "start": "node app/server.js"
     },
     "engines": {
         "node": "0.10.x"
