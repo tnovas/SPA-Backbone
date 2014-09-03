@@ -38,6 +38,6 @@
     "time-grunt": "~0.4.0"
   },
   "scripts": {
-    "start": "server.js"
+    "start": "node mockups/server.js"
   }
 }
