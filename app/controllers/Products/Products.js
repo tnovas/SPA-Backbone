@@ -1,16 +1,12 @@
 var Products = require('../../models/products/product');
 
-module.exports = function(){
-	var products;
-
+module.exports = function(callback){
 	Backbone.ajax({
 	    dataType: "json",
 	    url: "api/products",
-	    async: false,
-	    success: function(val){
-	        products = new Products(val);
+	    async: true,
+	    success: function(data){
+	        callback(new Products(data));
 	    }
 	});
-
-	return products;
 }; 

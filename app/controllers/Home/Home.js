@@ -1,16 +1,12 @@
 var Home = require('../../models/home/home');
 
-module.exports = function(){
-	var home;
-	
+module.exports = function(callback){
 	Backbone.ajax({
 	    dataType: "json",
 	    url: "api/home",
-	    async: false,
-	    success: function(val){	    	
-    		home = new Home(val);	
+	    async: true,
+	    success: function(data){	    	
+    		callback(new Home(data));	
 	    }
 	});
-
-	return home;
 }; 

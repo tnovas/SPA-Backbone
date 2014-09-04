@@ -24,6 +24,13 @@ module.exports = Backbone.Marionette.CompositeView.extend({
 	childView: view,
 
 	initialize: function(){
-		this.collection = require('../../controllers/products/products')();
+		var itemView = this;
+
+		function callbacks(data){
+			itemView.collection = data;
+			itemView.render();	
+		}
+
+		require('../../controllers/products/products')(callbacks);
 	}
 });

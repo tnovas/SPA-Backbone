@@ -5,6 +5,13 @@ module.exports = Backbone.Marionette.ItemView.extend({
 	template: HomeTemplate,
 
 	initialize: function(){
-		this.model = require('../../controllers/home/home')();
+		var itemView = this;
+
+		function callbacks(data){
+			itemView.model = data;
+			itemView.render();	
+		}
+
+		require('../../controllers/home/home')(callbacks);
 	}
 });
