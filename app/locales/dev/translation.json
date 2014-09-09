@@ -1,0 +1,14 @@
+{
+  "app": {
+    "name": "i18next"
+  },
+  "index": {
+    "home": "Inicio",
+    "products": "Productos",
+    "contact": "Contacto",
+    "search": "Buscar",
+    "language": "Lenguaje",
+    "spanish": "Español",
+    "english": "Ingles"
+  }
+}

@@ -9,7 +9,11 @@ app.addInitializer(function(){
 		container: 'body'
 	});
 
-	app.layout = new LayoutView();
+	app.setLang = require('./helpers/language/lang');
+
+	app.layout = new LayoutView({
+		language: app.setLang
+	});
 
 	app.container.show(app.layout);
 

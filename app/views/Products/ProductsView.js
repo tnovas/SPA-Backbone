@@ -3,19 +3,7 @@ var ProductTemplate = require('../templates/products/Product'),
 
 var view = Backbone.Marionette.ItemView.extend({
 	template: ProductTemplate,
-	className: 'col-md-4',
-
-	modelEvents: {
-		"change": "render"
-	},
-
-	events: {
-        "click a.button": "changePrice"
-    },
-
-    changePrice: function(){
-        this.model.set("price", this.model.get("price") + 1);
-    }
+	className: 'col-md-4'
 });
 
 module.exports = Backbone.Marionette.CompositeView.extend({
@@ -28,7 +16,7 @@ module.exports = Backbone.Marionette.CompositeView.extend({
 
 		function callbacks(data){
 			itemView.collection = data;
-			itemView.render();	
+			itemView.render();
 		}
 
 		require('../../controllers/products/products')(callbacks);

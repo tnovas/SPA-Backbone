@@ -1,6 +1,7 @@
 var ProductsView = require('../products/ProductsView'),
 	HomeView = require('../home/HomeView'),
-	ContactView = require('../Contact/ContactView');
+	ContactView = require('../Contact/ContactView'),
+	AdminView = require('../Admin/AdminView');
 
 module.exports = Backbone.Marionette.LayoutView.extend({
 
@@ -13,6 +14,25 @@ module.exports = Backbone.Marionette.LayoutView.extend({
 		mainContent: ".panel-body",
 		footer: "footer[role=contentinfo]"
 	},
+
+	ui: {
+		cultureDropBox: 'ul[role=menu] li'
+	},
+
+	events: {
+    	'click @ui.cultureDropBox': 'changeCulture'
+  	},
+
+  	initialize: function(options) {
+		this.setLang = options.language;
+	},
+
+  	changeCulture: function(data){
+  		var element = $(data.target);
+  		this.ui.cultureDropBox.removeClass('active');
+  		element.parent().addClass('active');
+  		this.setLang(element.attr('culture'));
+  	},
 
 	onRender: function(){
 		this.showHome();
@@ -28,5 +48,9 @@ module.exports = Backbone.Marionette.LayoutView.extend({
 
 	showContact: function(){
 		this.mainContent.show(new ContactView());
+	},
+
+	showAdmin: function(){
+		this.mainContent.show(new AdminView());
 	}
 });

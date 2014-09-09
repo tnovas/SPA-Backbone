@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         files: {
           "<%= paths.dist.css %>app.css": [
             "<%= paths.vendor.css %>*",
-            "<%= paths.app.css %>base.less"
+            "<%= paths.app.css %>*"
           ]
         }
       }

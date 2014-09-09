@@ -45,6 +45,14 @@ app.get('/api/products', function(req, res) {
     res.json(Products);
 });
 
+app.get('/api/login', function(req, res) { 
+    if (req.query.email !== 'tnovas@gmail.com' || req.query.password !== '123456'){
+        res.statusCode = 401;
+    }
+
+    res.json('');
+});
+
 app.get('*', function(req, res) {	
     res.sendfile('.'+ req.originalUrl);				
 });
