@@ -3,6 +3,7 @@ var LoginTemplate = require('../Templates/Login/Login'),
 
 module.exports = Backbone.Marionette.ItemView.extend({
 	template: LoginTemplate,
+    title: 'index.admin',
 
 	ui: {
     	email: 'input[type=text]',

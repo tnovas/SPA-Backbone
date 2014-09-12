@@ -82,12 +82,10 @@ module.exports = function(grunt) {
     concat: {
       vendor: {
         src: [
-            '<%= paths.vendor.js %>jquery.min.js'
-          , '<%= paths.vendor.js %>console-helper.js'
-          , '<%= paths.vendor.js %>underscore.js'
+          '<%= paths.vendor.js %>underscore.js'
           , '<%= paths.vendor.js %>backbone.min.js'
           , '<%= paths.vendor.js %>backbone.marionette.min.js'
-          , '<%= paths.vendor.js %>bootstrap.min.js'
+          , '<%= paths.vendor.js %>absolute-json.js'
           , '<%= paths.vendor.js %>**/*.js'
          ],
         dest: '<%= paths.dist.js %>vendor.min.js'
@@ -110,11 +108,25 @@ module.exports = function(grunt) {
           stripBanners: {
             line: true
           },
-          banner: '<%= banner %>',
+          banner: '<%= banner %>'
         },
         files: {
           '<%= paths.dist.js %>app.min.js': [ '<%= paths.dist.js %>app.min.js' ],
           '<%= paths.dist.js %>vendor.min.js': [ '<%= paths.dist.js %>vendor.min.js' ]
+        }
+      }
+    },
+
+    cssmin: {
+      app: {
+        options: {
+         stripBanners: {
+            line: true
+          },
+          banner: '<%= banner %>'
+        },
+        files: {
+          '<%= paths.dist.css %>app.css': [ '<%= paths.dist.css %>app.css' ],
         }
       }
     },
@@ -191,6 +203,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   require('./builder.grunt.js')(grunt);
 
@@ -213,6 +226,7 @@ module.exports = function(grunt) {
     "builder:dev", 
     "concat", 
     "uglify",
+    "cssmin",
     "clean:after",
     "copy"
   ]);

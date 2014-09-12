@@ -24,12 +24,13 @@ app.addInitializer(function(){
 	Backbone.history.start();
 
 	Backbone.history.on("all", function () {
-    	var active = $('ul.nav.navbar-nav li [href="#/' + Backbone.history.fragment + '"]').parent();
-		var noActive = $('ul.nav.navbar-nav li').not(active);
+		var ulNavBar = $('ul[class="nav navbar-nav"] li');
+		var routeName = Backbone.history.fragment;
+    	var active = ulNavBar.find('[href="#/' + routeName + '"]').parent();
+		var noActive = ulNavBar.not(active);
 		active.addClass('active');
 		noActive.removeClass('active');
 
-		var routeName = Backbone.history.fragment;
 		$('.panel-title').text(routeName.charAt(0).toUpperCase() + routeName.slice(1));
 	});
 });

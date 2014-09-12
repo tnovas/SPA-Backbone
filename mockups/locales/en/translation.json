@@ -1,9 +1,7 @@
 {
-  "app": {
-    "name": "i18next"
-  },
-  "index": {
-    "home": "Home",
+	"index.home": {
+		"text": "Home"
+	},
     "products": "Products",
     "contact": "Contact",
     "search": "Search",
