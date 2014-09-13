@@ -1,12 +1,11 @@
 {
-	"index.home": {
-		"text": "Home"
-	},
-    "products": "Products",
-    "contact": "Contact",
-    "search": "Search",
-    "language": "Language",
-    "spanish": "Spanish",
-    "english": "English"
-  }
+	"index.home": { "text": "Home" },
+	"index.products": { "text": "Products" },
+    "index.contact": { "text": "Contact" },
+    "index.search": { "text": "Search" },
+    "index.searchHolder": { "placeholder": "Search" },
+    "index.language": { "text": "Language" },
+    "index.spanish": { "text": "Spanish" },
+    "index.english": { "text": "English" },
+    "index.admin": { "text": "Administrator" }
 }

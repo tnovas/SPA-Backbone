@@ -1,14 +1,11 @@
 {
-  "app": {
-    "name": "i18next"
-  },
-  "index": {
-    "home": "Inicio",
-    "products": "Productos",
-    "contact": "Contacto",
-    "search": "Buscar",
-    "language": "Lenguaje",
-    "spanish": "Español",
-    "english": "Ingles"
-  }
+	"index.home": { "text": "Inicio" },
+	"index.products": { "text": "Productos" },
+    "index.contact": { "text": "Contacto" },
+    "index.search": { "text": "Buscar" },
+    "index.searchHolder": { "placeholder": "Buscar" },
+    "index.language": { "text": "Language" },
+    "index.spanish": { "text": "Español" },
+    "index.english": { "text": "Ingles" },
+    "index.admin": { "text": "Administrador" }
 }
