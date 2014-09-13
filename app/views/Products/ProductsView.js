@@ -1,6 +1,8 @@
 var ProductTemplate = require('../templates/products/Product'),
   ProductsTemplate = require('../templates/products/Products');
 
+var productsCollection;
+
 var view = Backbone.Marionette.ItemView.extend({
 	template: ProductTemplate,
 	className: 'col-md-4'
@@ -13,15 +15,14 @@ module.exports = Backbone.Marionette.CompositeView.extend({
 	title: 'index.products',
 
 	initialize: function(){
-		var itemView = this;
+		productsCollection = this;
+		require('../../controllers/products/products')(this.setCollection);
+	},
 
-		function callbacks(data){
-			itemView.collection = data;
-			itemView.collectionFilter = data.clone();
-			itemView.render();
-		}
-
-		require('../../controllers/products/products')(callbacks);
+	setCollection: function(data){
+		productsCollection.collection = data;
+		productsCollection.collectionFilter = data.clone();
+		productsCollection.render();
 	},
 
 	filterCollection: function(data){

@@ -1,11 +1,11 @@
-module.exports = function(data){
+module.exports = function(data, callback){
 	Backbone.ajax({
 	    dataType: "json",
 	    url: "api/login",
 	    data: data,
 	    async: true,
-	    success: function(){	    	
-    		console.log('Login :)');
+	    success: function(data){	    	
+    		callback(data);
 	    }
 	});
 }; 

@@ -1,6 +1,7 @@
 module.exports = Backbone.Model.extend({
 	defaults: {
-		email: '',
-		password: ''
+		id: '',
+		mail: '',
+		nombre: ''
 	}
 });

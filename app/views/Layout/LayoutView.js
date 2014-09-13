@@ -1,10 +1,11 @@
 var ProductsView = require('../products/ProductsView'),
 	HomeView = require('../home/HomeView'),
 	ContactView = require('../Contact/ContactView'),
-	AdminView = require('../Admin/AdminView');
+	LoginView = require('../Login/LoginView');
+
+var layoutView;
 
 module.exports = Backbone.Marionette.LayoutView.extend({
-
 	id: 'main-layout',
 
 	template: require('../templates/layout/mainLayout'),
@@ -30,11 +31,8 @@ module.exports = Backbone.Marionette.LayoutView.extend({
   	},
 
   	initialize: function(options) {
+  		layoutView = this;
 		this.setLang = options.language;
-	},
-
-	onRender: function(){
-		this.showHome();
 	},
 
 	searchProducts: function(){
@@ -69,11 +67,16 @@ module.exports = Backbone.Marionette.LayoutView.extend({
 		this.mainContent.show(contacts);
 	},
 
-	showAdmin: function(){
+	showAdmin: function(login){
+		layoutView.model = login;
+	},
+
+	showLogin: function(){
 		this.showSearch();
-		var admin = new AdminView();
-		this.changeTitle(admin.title);
-		this.mainContent.show(admin);
+		var login = new LoginView();
+		login.layout = this.showAdmin;
+		this.changeTitle(login.title);
+		this.mainContent.show(login);
 	},
 
 	showSearch: function(){

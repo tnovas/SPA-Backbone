@@ -1,9 +1,11 @@
 module.exports = Backbone.Router.extend({
 	routes: {
+		'': 'home',
 		'inicio': 'home',
 		'productos': 'products',
 		'contacto': 'contact',
-		'admin': 'admin'
+		'admin': 'admin',
+		'login': 'login'
 	},
 
 	initialize: function(options) {
@@ -24,5 +26,9 @@ module.exports = Backbone.Router.extend({
 
 	admin: function(){
 		this.app.layout.showAdmin();
+	},
+
+	login: function(){
+		this.app.layout.showLogin();
 	}
 });

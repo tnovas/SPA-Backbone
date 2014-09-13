@@ -1,5 +1,7 @@
 var LoginTemplate = require('../Templates/Login/Login'),
-	LoginModel = require('../../Models/Login/Login');
+    UserModel = require('../../models/User/User');
+    
+var loginView;
 
 module.exports = Backbone.Marionette.ItemView.extend({
 	template: LoginTemplate,
@@ -15,11 +17,16 @@ module.exports = Backbone.Marionette.ItemView.extend({
     },
 
     login: function(){
-        var login = new LoginModel({
+        loginView = this;
+        var login = {
             email: this.ui.email.val(),
             password: this.ui.password.val()
-        });
+        };
 
-        require('../../controllers/login/login')(login.attributes);    	
+        require('../../controllers/login/login')(login, this.setUser);    	
+    },
+
+    setUser: function(data){
+        loginView.layout(new UserModel(data));
     }
 });

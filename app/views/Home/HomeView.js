@@ -1,18 +1,19 @@
 var HomeTemplate = require('../templates/home/home');
 
+var home;
+
 module.exports = Backbone.Marionette.ItemView.extend({
 	tagName: 'p',
 	template: HomeTemplate,
 	title: 'index.home',
 
 	initialize: function(){
-		var itemView = this;
+		home = this;
+		require('../../controllers/home/home')(this.setHome);
+	},
 
-		function callbacks(data){
-			itemView.model = data;
-			itemView.render();	
-		}
-
-		require('../../controllers/home/home')(callbacks);
+	setHome: function(data){
+		home.model = data;
+		home.render();	
 	}
 });

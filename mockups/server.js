@@ -37,6 +37,12 @@ var Products = [{
         }
     ];
 
+var User = {
+            id: '1',
+            nombre: 'Tomas',
+            mail: 'tnovas@gmail.com',
+        };
+
 app.get('/api/home', function(req, res) {
     res.json(Home);
 });
@@ -50,7 +56,7 @@ app.get('/api/login', function(req, res) {
         res.statusCode = 401;
     }
 
-    res.json('');
+    res.json(User);
 });
 
 app.get('*', function(req, res) {	
