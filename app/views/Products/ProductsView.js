@@ -1,49 +1,42 @@
 var ProductTemplate = require('../templates/products/Product'),
   ProductsTemplate = require('../templates/products/Products');
 
-var productsCollection;
+//var productsCollection;
 
 var view = Backbone.Marionette.ItemView.extend({
-	template: ProductTemplate,
-	className: 'col-md-4'
+  template: ProductTemplate,
+  className: 'col-md-4',
+
+  onRender: function(){
+    // el filtro setea la propiedad "hide" en el model cuando
+    // tiene que estar oculto de la busqueda
+
+    if (this.model.hide){
+      this.$el.hide();
+    }
+    else {
+      this.$el.show(); 
+    }
+  }
+
 });
 
 module.exports = Backbone.Marionette.CompositeView.extend({
-	template: ProductsTemplate,
-	childViewContainer: "div.row.productos",
-	childView: view,
-	title: 'index.products',
+  template: ProductsTemplate,
+  childViewContainer: "div.row.productos",
+  childView: view,
+  title: 'index.products',
 
-	ui: {
-		searchText: 'div[role=search] input'
-	},
+  ui: {
+    searchText: 'div[role=search] input'
+  },
 
-	events: {
-    	'keyup @ui.searchText': 'filterCollection'
-  	},
+  events: {
+    'keyup @ui.searchText': 'filterCollection'
+  },
 
-	initialize: function(){
-		productsCollection = this;
-		require('../../controllers/products/products')(this.setCollection);
-	},
-
-	setCollection: function(data){
-		productsCollection.collection = data;
-		productsCollection.collectionFilter = data.clone();
-		productsCollection.render();
-	},
-
-	filterCollection: function(){
-		var textFilter = this.ui.searchText.val();
-		if (textFilter === ''){
-			this.collection = this.collectionFilter.clone();
-		}
-		else{
-			var filter = this.collectionFilter.filter(function(model) {
-				return model.get('title').toLowerCase().indexOf(textFilter.toLowerCase()) !== -1; 
-			});
-
-			this.collection.remove(filter);
-		}
-	}
+  filterCollection: function(){
+    var textFilter = this.ui.searchText.val();    
+    this.collection.filter(textFilter);
+  }
 });

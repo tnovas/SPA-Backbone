@@ -11,26 +11,32 @@ var Home = {
 };
 
 var Products = [{
+            id: 1,
             title: '3M - Cartucho serie 6001',
             description: 'Cartucho de la serie 6000 para vapores organicos.',
             image: 'http://cityagro.com.ar/productImages/cartucho6001.JPG'
         },{
+            id: 2,
             title: '3M - Prefiltro para particulas 5N11',
             description: 'Prefiltro para particulas de filtros serie 6000, electroestatico.',
             image: 'http://cityagro.com.ar/productImages/Prefiltro5N11.JPG'
         },{
+            id: 3,
             title: '3M - Prefiltro para particulas 5N11',
             description: 'Prefiltro para particulas de filtros serie 6000, electroestatico.',
             image: 'http://cityagro.com.ar/productImages/Prefiltro5N11.JPG'
         },{
+            id: 4,
             title: '3M - Prefiltro para particulas 5N11',
             description: 'Prefiltro para particulas de filtros serie 6000, electroestatico.',
             image: 'http://cityagro.com.ar/productImages/Prefiltro5N11.JPG'
         },{
+            id: 5,
             title: '3M - Prefiltro para particulas 5N11',
             description: 'Prefiltro para particulas de filtros serie 6000, electroestatico.',
             image: 'http://cityagro.com.ar/productImages/Prefiltro5N11.JPG'
         },{
+            id: 6,
             title: '3M - Prefiltro para particulas 5N11',
             description: 'Prefiltro para particulas de filtros serie 6000, electroestatico.',
             image: 'http://cityagro.com.ar/productImages/Prefiltro5N11.JPG'

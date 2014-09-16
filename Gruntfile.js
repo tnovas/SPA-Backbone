@@ -152,7 +152,8 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: "<%= paths.app.root %>**/*",
+        files: ["<%= paths.app.root %>**/*",
+          "!<%= paths.app.root %>views/templates/**/*.js"],
         tasks: ['default']
       }
     },

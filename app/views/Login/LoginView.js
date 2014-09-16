@@ -4,29 +4,34 @@ var LoginTemplate = require('../Templates/Login/Login'),
 var loginView;
 
 module.exports = Backbone.Marionette.ItemView.extend({
-	template: LoginTemplate,
-    title: 'index.admin',
+  template: LoginTemplate,
+  title: 'index.admin',
 
-	ui: {
-    	email: 'input[type=text]',
-    	password: 'input[type=password]',
-  	},
+  ui: {
+    email: 'input[type=text]',
+    password: 'input[type=password]',
+  },
 
-	events: {
-        "click button": "login"
-    },
+  events: {
+    "click button": "login"
+  },
 
-    login: function(){
-        loginView = this;
-        var login = {
-            email: this.ui.email.val(),
-            password: this.ui.password.val()
-        };
+  initialize: function(){
+      
+  },
 
-        require('../../controllers/login/login')(login, this.setUser);    	
-    },
+  login: function(){
+    loginView = this;
+    var login = {
+      email: this.ui.email.val(),
+      password: this.ui.password.val()
+    };
 
-    setUser: function(data){
-        loginView.layout(new UserModel(data));
-    }
+    require('../../controllers/login/login')(login, this.setUser);
+  },
+
+  setUser: function(data){
+    loginView.layout(new UserModel(data));
+  }
+
 });
