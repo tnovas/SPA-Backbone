@@ -21,7 +21,7 @@ module.exports = Backbone.Collection.extend({
 
       product.hide = false;
       
-      if (title && title.indexOf(keyword.toLowerCase()) === -1){
+      if (keyword && title.indexOf(keyword.toLowerCase()) === -1){
         product.hide = true;
       }
     });
