@@ -14,6 +14,14 @@ module.exports = Backbone.Marionette.CompositeView.extend({
 	childView: view,
 	title: 'index.products',
 
+	ui: {
+		searchText: 'div[role=search] input'
+	},
+
+	events: {
+    	'keyup @ui.searchText': 'filterCollection'
+  	},
+
 	initialize: function(){
 		productsCollection = this;
 		require('../../controllers/products/products')(this.setCollection);
@@ -25,8 +33,8 @@ module.exports = Backbone.Marionette.CompositeView.extend({
 		productsCollection.render();
 	},
 
-	filterCollection: function(data){
-		var textFilter = data;
+	filterCollection: function(){
+		var textFilter = this.ui.searchText.val();
 		if (textFilter === ''){
 			this.collection = this.collectionFilter.clone();
 		}
@@ -35,9 +43,7 @@ module.exports = Backbone.Marionette.CompositeView.extend({
 				return model.get('title').toLowerCase().indexOf(textFilter.toLowerCase()) !== -1; 
 			});
 
-			this.collection.reset(filter);	
+			this.collection.remove(filter);
 		}
-
-		this.render();
 	}
 });

@@ -18,25 +18,16 @@ module.exports = Backbone.Marionette.LayoutView.extend({
 
 	ui: {
 		cultureDropBox: 'ul[role=menu] li',
-		title: 'h3[class=panel-title]',
-		searchDiv: 'div[role=search]',
-		searchButton: 'div[role=search] button',
-		searchText: 'div[role=search] input'
+		title: 'h3[class=panel-title]'
 	},
 
 	events: {
-    	'click @ui.cultureDropBox': 'changeCulture',
-    	'click @ui.searchButton': 'searchProducts',
-    	'keyup @ui.searchText': 'searchProducts'
+    	'click @ui.cultureDropBox': 'changeCulture'
   	},
 
   	initialize: function(options) {
   		layoutView = this;
 		this.setLang = options.language;
-	},
-
-	searchProducts: function(){
-		this.products.filterCollection(this.ui.searchText.val());
 	},
 
 	changeCulture: function(data){
@@ -47,21 +38,18 @@ module.exports = Backbone.Marionette.LayoutView.extend({
   	},
 
 	showHome: function(){
-		this.showSearch();
 		var home = new HomeView();
 		this.changeTitle(home.title);
 		this.mainContent.show(home);
 	},
 
 	showProducts: function(){
-		this.hideSearch();
-		this.products = new ProductsView();
-		this.changeTitle(this.products.title);
-		this.mainContent.show(this.products);
+		var products = new ProductsView();
+		this.changeTitle(products.title);
+		this.mainContent.show(products);
 	},
 
 	showContact: function(){
-		this.showSearch();
 		var contacts = new ContactView();
 		this.changeTitle(contacts.title);
 		this.mainContent.show(contacts);
@@ -69,22 +57,14 @@ module.exports = Backbone.Marionette.LayoutView.extend({
 
 	showAdmin: function(login){
 		layoutView.model = login;
+		console.log('Login :)');
 	},
 
 	showLogin: function(){
-		this.showSearch();
 		var login = new LoginView();
 		login.layout = this.showAdmin;
 		this.changeTitle(login.title);
 		this.mainContent.show(login);
-	},
-
-	showSearch: function(){
-		this.ui.searchDiv.addClass('sr-only');
-	},
-
-	hideSearch: function(){
-		this.ui.searchDiv.removeClass('sr-only');
 	},
 
 	changeTitle: function(title){
