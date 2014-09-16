@@ -6,7 +6,6 @@
     "author": "Tomas Novas",
     "dependencies": {
         "express": "latest",
-        "mongoose": "latest",
         "body-parser": "1.4.x",
         "method-override": "2.1.x"
     },
