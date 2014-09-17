@@ -1,4 +1,4 @@
-var LayoutView = require('./views/layout/LayoutView'),
+var LayoutView = require('./views/LayoutView'),
 	Routers = require('./routers/RouterApp');
 
 var app = module.exports = new Backbone.Marionette.Application();
@@ -9,7 +9,7 @@ app.addInitializer(function(){
 		container: 'body'
 	});
 
-	app.setLang = require('./helpers/language/lang');
+	app.setLang = require('./helpers/lang');
 
 	app.layout = new LayoutView({
 		language: app.setLang
